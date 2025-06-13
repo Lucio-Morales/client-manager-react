@@ -1,9 +1,10 @@
 function App() {
   return (
-    <>
-      <h1>Hola papuu</h1>
-    </>
+    <div>
+      <h1>Titulo h1</h1>
+      <p>Hola mundoo</p>
+    </div>
   );
 }
- 
+
 export default App;
