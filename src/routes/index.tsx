@@ -13,6 +13,10 @@ import AdminDashboard from '../modules/admin/pages/Dashboard';
 import TrainerDashboard from '../modules/trainer/pages/Dashboard';
 import ClientDashboard from '../modules/client/pages/Dashboard';
 
+import Settings from '../modules/admin/pages/Settings';
+import AuthLayout from '../layouts/AuthLayout';
+import RegisterPage from '../modules/auth/pages/RegisterPage';
+
 export const router = createBrowserRouter([
   {
     path: '/',
@@ -20,8 +24,18 @@ export const router = createBrowserRouter([
     errorElement: <div>404 - Página no encontrada</div>,
   },
   {
-    path: '/login',
-    element: <LoginPage />,
+    path: '/auth',
+    element: <AuthLayout />,
+    children: [
+      {
+        path: 'login',
+        element: <LoginPage />,
+      },
+      {
+        path: 'register',
+        element: <RegisterPage />,
+      },
+    ],
   },
   {
     path: '/unauthorized',
@@ -35,7 +49,7 @@ export const router = createBrowserRouter([
         element: <AdminLayout />,
         children: [
           { index: true, element: <AdminDashboard /> },
-          // otras rutas: /admin/users, /admin/settings
+          { path: 'settings', element: <Settings /> },
         ],
       },
     ],
