@@ -1,16 +1,21 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useUserStore } from '../../../store/userStore';
 import { loginRequest } from '../api/authService';
 
 export default function LoginPage() {
+  const { user, login } = useUserStore();
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (user) {
+      navigate(`/${user.role}/dashboard`, { replace: true });
+    }
+  }, [user]);
+
   const [userData, setUserData] = useState({
     email: '',
     password: '',
   });
-
-  const login = useUserStore((state) => state.login);
-  const navigate = useNavigate();
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();

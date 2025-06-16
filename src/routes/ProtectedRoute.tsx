@@ -8,7 +8,7 @@ interface ProtectedRouteProps {
 export function ProtectedRoute({ allowedRoles }: ProtectedRouteProps) {
   const user = useUserStore((state) => state.user);
 
-  if (!user) return <Navigate to="/login" replace />;
+  if (!user) return <Navigate to="/auth/login" replace />;
   if (!allowedRoles.includes(user.role!)) return <Navigate to="/unauthorized" replace />;
 
   return <Outlet />;

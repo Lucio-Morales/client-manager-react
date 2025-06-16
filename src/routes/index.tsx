@@ -16,6 +16,13 @@ import ClientDashboard from '../modules/client/pages/Dashboard';
 import Settings from '../modules/admin/pages/Settings';
 import AuthLayout from '../layouts/AuthLayout';
 import RegisterPage from '../modules/auth/pages/RegisterPage';
+import MainLayout from '../layouts/PrivateLayout';
+import Profile from '../modules/trainer/pages/Profile';
+import Clients from '../modules/trainer/pages/Clients';
+import Routines from '../modules/trainer/pages/Routines';
+import Payments from '../modules/trainer/pages/Payments';
+import Users from '../modules/admin/pages/Users';
+import { RequireUnauth } from '../modules/auth/components/RequireUnauth';
 
 export const router = createBrowserRouter([
   {
@@ -29,7 +36,11 @@ export const router = createBrowserRouter([
     children: [
       {
         path: 'login',
-        element: <LoginPage />,
+        element: (
+          <RequireUnauth>
+            <LoginPage />
+          </RequireUnauth>
+        ),
       },
       {
         path: 'register',
@@ -46,9 +57,11 @@ export const router = createBrowserRouter([
     children: [
       {
         path: '/admin',
-        element: <AdminLayout />,
+        element: <MainLayout />,
         children: [
           { index: true, element: <AdminDashboard /> },
+          { path: 'dashboard', element: <AdminDashboard /> },
+          { path: 'users', element: <Users /> },
           { path: 'settings', element: <Settings /> },
         ],
       },
@@ -59,8 +72,15 @@ export const router = createBrowserRouter([
     children: [
       {
         path: '/trainer',
-        element: <TrainerLayout />,
-        children: [{ index: true, element: <TrainerDashboard /> }],
+        element: <MainLayout />,
+        children: [
+          { index: true, element: <TrainerDashboard /> },
+          { path: 'dashboard', element: <TrainerDashboard /> },
+          { path: 'profile', element: <Profile /> },
+          { path: 'clients', element: <Clients /> },
+          { path: 'routines', element: <Routines /> },
+          { path: 'payments', element: <Payments /> },
+        ],
       },
     ],
   },
@@ -69,7 +89,7 @@ export const router = createBrowserRouter([
     children: [
       {
         path: '/client',
-        element: <ClientLayout />,
+        element: <MainLayout />,
         children: [{ index: true, element: <ClientDashboard /> }],
       },
     ],
