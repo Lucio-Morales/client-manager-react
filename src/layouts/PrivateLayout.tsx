@@ -1,6 +1,5 @@
-import { Navigate, Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import Sidebar from '../components/layout/Sidebar';
-import { useUserStore } from '../store/userStore';
 
 export default function MainLayout() {
   return (

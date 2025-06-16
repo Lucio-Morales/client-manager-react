@@ -5,10 +5,6 @@ import App from '../App';
 import LoginPage from '../modules/auth/pages/LoginPage';
 import Unauthorized from '../modules/auth/pages/Unauthorized';
 
-import AdminLayout from '../layouts/AdminLayout';
-import TrainerLayout from '../layouts/TrainerLayout';
-import ClientLayout from '../layouts/ClientLayout';
-
 import AdminDashboard from '../modules/admin/pages/Dashboard';
 import TrainerDashboard from '../modules/trainer/pages/Dashboard';
 import ClientDashboard from '../modules/client/pages/Dashboard';
@@ -18,11 +14,13 @@ import AuthLayout from '../layouts/AuthLayout';
 import RegisterPage from '../modules/auth/pages/RegisterPage';
 import MainLayout from '../layouts/PrivateLayout';
 import Profile from '../modules/trainer/pages/Profile';
-import Clients from '../modules/trainer/pages/Clients';
-import Routines from '../modules/trainer/pages/Routines';
+import ClientsList from '../modules/trainer/pages/ClientsList';
+import RoutinesList from '../modules/trainer/pages/RoutinesList';
 import Payments from '../modules/trainer/pages/Payments';
 import Users from '../modules/admin/pages/Users';
 import { RequireUnauth } from '../modules/auth/components/RequireUnauth';
+import ClientDetail from '../modules/trainer/pages/ClientDetail';
+import RoutineEditor from '../modules/trainer/pages/RoutineEditor';
 
 export const router = createBrowserRouter([
   {
@@ -75,10 +73,12 @@ export const router = createBrowserRouter([
         element: <MainLayout />,
         children: [
           { index: true, element: <TrainerDashboard /> },
-          { path: 'dashboard', element: <TrainerDashboard /> },
+          { path: '', element: <TrainerDashboard /> },
           { path: 'profile', element: <Profile /> },
-          { path: 'clients', element: <Clients /> },
-          { path: 'routines', element: <Routines /> },
+          { path: 'clients', element: <ClientsList /> },
+          { path: 'clients/:id', element: <ClientDetail /> },
+          { path: 'routines', element: <RoutinesList /> },
+          { path: 'routines/:id', element: <RoutineEditor /> },
           { path: 'payments', element: <Payments /> },
         ],
       },

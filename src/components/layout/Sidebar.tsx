@@ -5,19 +5,19 @@ import clsx from 'clsx';
 
 const navItems = {
   admin: [
-    { path: '/admin/dashboard', label: 'Dashboard' },
+    { path: '/admin', label: 'Inicio' },
     { path: '/admin/users', label: 'Users' },
     { path: '/admin/settings', label: 'Settings' },
   ],
   trainer: [
-    { path: '/trainer/dashboard', label: 'Dashboard' },
+    { path: '/trainer', label: 'Inicio' },
     { path: '/trainer/profile', label: 'Profile' },
     { path: '/trainer/clients', label: 'Clients' },
     { path: '/trainer/routines', label: 'Routines' },
     { path: '/trainer/payments', label: 'Payments' },
   ],
   client: [
-    { path: '/client/dashboard', label: 'Inicio' },
+    { path: '/client', label: 'Inicio' },
     { path: '/client/routine', label: 'Routine' },
     { path: '/trainer/progress', label: 'Progress' },
   ],
@@ -42,13 +42,14 @@ export default function Sidebar() {
       <div>
         <h2 className="text-2xl font-bold mb-6 text-center">FitAdmin</h2>
         <nav className="space-y-2">
-          {items.map((item) => (
+          {items.map((item: any) => (
             <Link
               key={item.path}
               to={item.path}
               className={clsx(
                 'block px-4 py-2 rounded hover:bg-blue-100 dark:hover:bg-blue-800 transition',
-                location.pathname === item.path
+                // location.pathname === item.path
+                location.pathname.startsWith(item.path)
                   ? 'bg-blue-200 dark:bg-blue-700 font-semibold'
                   : 'text-gray-700 dark:text-gray-300'
               )}

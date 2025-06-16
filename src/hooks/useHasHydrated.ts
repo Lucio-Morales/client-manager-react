@@ -4,7 +4,6 @@ import { useUserStore } from '../store/userStore';
 
 export function useHasHydrated() {
   const [hasHydrated, setHasHydrated] = useState(false);
-  const state = useUserStore();
 
   useEffect(() => {
     const unsub = useUserStore.persist.onFinishHydration(() => {
