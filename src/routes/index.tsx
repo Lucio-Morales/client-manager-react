@@ -21,6 +21,8 @@ import Users from '../modules/admin/pages/Users';
 import { RequireUnauth } from '../modules/auth/components/RequireUnauth';
 import ClientDetail from '../modules/trainer/pages/ClientDetail';
 import RoutineEditor from '../modules/trainer/pages/RoutineEditor';
+import ClientRoutine from '../modules/client/pages/ClientRoutine';
+import Progress from '../modules/client/pages/Progress';
 
 export const router = createBrowserRouter([
   {
@@ -90,7 +92,12 @@ export const router = createBrowserRouter([
       {
         path: '/client',
         element: <MainLayout />,
-        children: [{ index: true, element: <ClientDashboard /> }],
+        children: [
+          { index: true, element: <ClientDashboard /> },
+          { path: '', element: <ClientDashboard /> },
+          { path: 'routine', element: <ClientRoutine /> },
+          { path: 'progress', element: <Progress /> },
+        ],
       },
     ],
   },

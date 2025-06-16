@@ -1,25 +1,25 @@
 import { useUserStore } from '../../store/userStore';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { LogOut } from 'lucide-react';
+import { BarChart3, CreditCard, Dumbbell, Home, ListTodo, LogOut, Settings, User, Users } from 'lucide-react';
 import clsx from 'clsx';
 
 const navItems = {
   admin: [
-    { path: '/admin', label: 'Inicio' },
-    { path: '/admin/users', label: 'Users' },
-    { path: '/admin/settings', label: 'Settings' },
+    { path: '/admin', label: 'Home', icon: Home },
+    { path: '/admin/users', label: 'Users', icon: Users },
+    { path: '/admin/settings', label: 'Settings', icon: Settings },
   ],
   trainer: [
-    { path: '/trainer', label: 'Inicio' },
-    { path: '/trainer/profile', label: 'Profile' },
-    { path: '/trainer/clients', label: 'Clients' },
-    { path: '/trainer/routines', label: 'Routines' },
-    { path: '/trainer/payments', label: 'Payments' },
+    { path: '/trainer', label: 'Home', icon: Home },
+    { path: '/trainer/profile', label: 'Profile', icon: User },
+    { path: '/trainer/clients', label: 'Clients', icon: Users },
+    { path: '/trainer/routines', label: 'Routines', icon: Dumbbell },
+    { path: '/trainer/payments', label: 'Payments', icon: CreditCard },
   ],
   client: [
-    { path: '/client', label: 'Inicio' },
-    { path: '/client/routine', label: 'Routine' },
-    { path: '/trainer/progress', label: 'Progress' },
+    { path: '/client', label: 'Home', icon: Home },
+    { path: '/client/routine', label: 'Routine', icon: ListTodo },
+    { path: '/client/progress', label: 'Progress', icon: BarChart3 },
   ],
 };
 
@@ -33,30 +33,33 @@ export default function Sidebar() {
   const items = navItems[user.role] || [];
 
   const handleLogout = () => {
-    logout(); // limpia zustand y localStorage
+    logout();
     navigate('/auth/login');
   };
 
   return (
     <aside className="w-64 bg-white dark:bg-gray-800 border-r dark:border-gray-700 h-screen sticky top-0 flex flex-col justify-between p-4">
       <div>
-        <h2 className="text-2xl font-bold mb-6 text-center">FitAdmin</h2>
+        <h2 className="text-2xl font-bold mb-6 text-center">Fit-Admin</h2>
         <nav className="space-y-2">
-          {items.map((item: any) => (
-            <Link
-              key={item.path}
-              to={item.path}
-              className={clsx(
-                'block px-4 py-2 rounded hover:bg-blue-100 dark:hover:bg-blue-800 transition',
-                // location.pathname === item.path
-                location.pathname.startsWith(item.path)
-                  ? 'bg-blue-200 dark:bg-blue-700 font-semibold'
-                  : 'text-gray-700 dark:text-gray-300'
-              )}
-            >
-              {item.label}
-            </Link>
-          ))}
+          {items.map((item: any) => {
+            const Icon = item.icon;
+            return (
+              <Link
+                key={item.path}
+                to={item.path}
+                className={clsx(
+                  'flex items-center gap-2 px-4 py-2 rounded hover:bg-blue-100 dark:hover:bg-blue-800 ',
+                  location.pathname === item.path
+                    ? 'bg-blue-200 dark:bg-blue-700 font-semibold'
+                    : 'text-gray-700 dark:text-gray-300'
+                )}
+              >
+                <Icon size={18} />
+                <span>{item.label}</span>
+              </Link>
+            );
+          })}
         </nav>
       </div>
 
