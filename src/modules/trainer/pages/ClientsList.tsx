@@ -1,8 +1,9 @@
 const ClientsList = () => {
   return (
-    <>
-      <h2>Trainer clients</h2>
-    </>
+    <div className="min-h-full w-full flex justify-center items-start bg-gray-200 rounded-2xl border-1">
+     <h2>Client list</h2>
+     
+    </div>
   );
 };
 
