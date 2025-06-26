@@ -45,9 +45,8 @@ const Profile = () => {
     );
 
   return (
-    <div className="min-h-full w-full flex justify-center items-start"> 
-     
-      <div className="relative w-full bg-white dark:bg-zinc-900 rounded-2xl shadow-xl overflow-hidden transform transition-all duration-300">
+    <div className="min-h-full w-full flex justify-center items-start">
+      <div className="relative w-full  bg-white dark:bg-zinc-900 rounded-2xl shadow-xl overflow-hidden transform transition-all duration-300">
         {/* Edit Button */}
         <button
           onClick={handleEditClick}
