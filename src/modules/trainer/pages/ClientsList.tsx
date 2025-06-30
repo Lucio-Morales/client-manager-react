@@ -20,6 +20,8 @@ const ClientsList = () => {
           {
             id: '1',
             name: 'Juan Perez',
+            dni: '123',
+            status: 'Activo',
             email: 'juan.perez@example.com',
             phone: '123-456-7890',
             address: 'Calle Falsa 123',
@@ -27,6 +29,8 @@ const ClientsList = () => {
           {
             id: '2',
             name: 'Maria Garcia',
+            dni: '456',
+            status: 'Activo',
             email: 'maria.garcia@example.com',
             phone: '098-765-4321',
             address: 'Avenida Siempre Viva 456',
@@ -34,6 +38,8 @@ const ClientsList = () => {
           {
             id: '3',
             name: 'Carlos Lopez',
+            dni: '789',
+            status: 'Inactivo',
             email: 'carlos.lopez@example.com',
             phone: '555-123-4567',
             address: 'Boulevard de los Sueños 789',
@@ -41,6 +47,8 @@ const ClientsList = () => {
           {
             id: '4',
             name: 'Ana Rodríguez',
+            dni: '135',
+            status: 'Activo',
             email: 'ana.rodriguez@example.com',
             phone: '111-222-3333',
             address: 'Calle del Sol 10',
@@ -48,6 +56,8 @@ const ClientsList = () => {
           {
             id: '5',
             name: 'Pedro Gómez',
+            dni: '246',
+            status: 'Inactivo',
             email: 'pedro.gomez@example.com',
             phone: '444-555-6666',
             address: 'Avenida de la Luna 20',
@@ -55,6 +65,8 @@ const ClientsList = () => {
           {
             id: '6',
             name: 'Laura Fernández',
+            dni: '790',
+            status: 'Activo',
             email: 'laura.fernandez@example.com',
             phone: '777-888-9999',
             address: 'Plaza Mayor 30',
@@ -62,6 +74,8 @@ const ClientsList = () => {
           {
             id: '7',
             name: 'Roberto Díaz',
+            dni: '112',
+            status: 'Activo',
             email: 'roberto.diaz@example.com',
             phone: '222-333-4444',
             address: 'Parque Central 50',
@@ -69,6 +83,8 @@ const ClientsList = () => {
           {
             id: '8',
             name: 'Sofía Martínez',
+            dni: '113',
+            status: 'Activo',
             email: 'sofia.martinez@example.com',
             phone: '999-000-1111',
             address: 'Ruta de la Montaña 60',
@@ -76,6 +92,8 @@ const ClientsList = () => {
           {
             id: '9',
             name: 'Gabriel Sánchez',
+            dni: '114',
+            status: 'Activo',
             email: 'gabriel.sanchez@example.com',
             phone: '333-444-5555',
             address: 'Camino del Río 70',
@@ -83,6 +101,8 @@ const ClientsList = () => {
           {
             id: '10',
             name: 'Valeria Castro',
+            dni: '115',
+            status: 'Inactivo',
             email: 'valeria.castro@example.com',
             phone: '666-777-8888',
             address: 'Bosque Escondido 80',

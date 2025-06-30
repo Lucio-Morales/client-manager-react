@@ -2,7 +2,6 @@ import { useUserStore } from '../../store/userStore';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { BarChart3, CreditCard, Dumbbell, Home, ListTodo, LogOut, Menu, Settings, User, Users, X } from 'lucide-react';
 import clsx from 'clsx';
-import { useState } from 'react';
 
 const navItems = {
   admin: [
