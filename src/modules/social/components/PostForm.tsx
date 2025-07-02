@@ -1,32 +1,82 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
+import { Post } from '../../../types/social/types';
+import { Loader2, Image, Video } from 'lucide-react';
 
-interface PostItemProps {
-  post: {
-    id: string;
-    user: {
-      name: string;
-      role: 'admin' | 'entrenador' | 'cliente';
-    };
-    content: string;
-    createdAt: string;
-  };
+interface NewPostFormProps {
+  onAddPost: (newPost: Post) => void;
+  currentUser: Post['user'];
 }
 
-const PostItem: FC<PostItemProps> = ({ post }) => {
-  const formattedDate = new Date(post.createdAt).toLocaleString();
+const PostForm: FC<NewPostFormProps> = ({ onAddPost, currentUser }) => {
+  const [postContent, setPostContent] = useState('');
+  const [isPosting, setIsPosting] = useState(false);
+
+  const handleSubmit = (event: React.FormEvent) => {
+    event.preventDefault();
+    if (!postContent.trim()) return;
+
+    setIsPosting(true);
+
+    setTimeout(() => {
+      const newPost: Post = {
+        id: crypto.randomUUID(),
+        user: currentUser,
+        content: postContent,
+        createdAt: new Date().toISOString(),
+        likes: 0,
+        comments: 0,
+        reposts: 0,
+      };
+      onAddPost(newPost);
+      setPostContent('');
+      setIsPosting(false);
+    }, 1200);
+  };
+
+  const isDisabled = isPosting || !postContent.trim();
 
   return (
-    <div className="bg-white p-4 rounded shadow-sm border border-gray-200 w-full">
-      <div className="flex items-center justify-between mb-2">
-        <div>
-          <p className="font-semibold text-gray-800">{post.user.name}</p>
-          <span className="text-xs text-gray-500 capitalize">{post.user.role}</span>
+    <form onSubmit={handleSubmit} className="bg-white p-4 mb-4 rounded shadow-sm border border-gray-200 w-full">
+      <textarea
+        className="w-full resize-none border border-gray-300 rounded p-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+        rows={3}
+        placeholder="¿En qué estás pensando?"
+        value={postContent}
+        onChange={(event) => setPostContent(event.target.value)}
+        disabled={isPosting}
+      />
+
+      <div className="flex justify-between items-center mt-2">
+        {/* Íconos decorativos */}
+        <div className="flex items-center gap-3 text-gray-500">
+          <button type="button" title="Agregar imagen" className="hover:text-blue-600 transition-colors cursor-pointer">
+            <Image size={20} />
+          </button>
+          <button type="button" title="Agregar video" className="hover:text-blue-600 transition-colors cursor-pointer">
+            <Video size={20} />
+          </button>
         </div>
-        <span className="text-xs text-gray-400">{formattedDate}</span>
+
+        {/* Botón Publicar */}
+        <button
+          type="submit"
+          disabled={isDisabled}
+          className={`inline-flex items-center gap-2 px-4 py-2 rounded text-sm font-medium text-white ${
+            isDisabled ? 'bg-blue-300 cursor-not-allowed' : 'bg-blue-600 hover:bg-blue-700 transition-colors'
+          }`}
+        >
+          {isPosting ? (
+            <>
+              <Loader2 className="animate-spin" size={16} />
+              Publicando...
+            </>
+          ) : (
+            'Publicar'
+          )}
+        </button>
       </div>
-      <p className="text-gray-700 text-sm whitespace-pre-wrap">{post.content}</p>
-    </div>
+    </form>
   );
 };
 
-export default PostItem;
+export default PostForm;
