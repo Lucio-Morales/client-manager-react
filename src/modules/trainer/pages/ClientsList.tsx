@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Client } from '../../../types/client/types';
 import ClientTable from '../../client/components/ClientTable';
 import ClientToolbar from '../../client/components/ClientToolbar';
+import CreateClientModal from '../../client/components/CreateClientModal';
 
 const ClientsList = () => {
   const [clients, setClients] = useState<Client[]>([]);
@@ -9,6 +10,7 @@ const ClientsList = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState<string>('');
+  const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
 
   useEffect(() => {
     // Simular la obtención de datos de una API
@@ -140,8 +142,7 @@ const ClientsList = () => {
 
   // Manejador para el botón "Nuevo Cliente"
   const handleNewClient = useCallback(() => {
-    alert('¡Acción: Crear nuevo cliente!');
-    // Aquí iría la lógica para navegar a un formulario de creación o abrir un modal
+    setIsCreateModalOpen(true);
   }, []);
 
   // Manejador para el botón "Actualizar Lista"
@@ -184,6 +185,8 @@ const ClientsList = () => {
           <ClientTable clients={clients} />
         </div>
       )}
+
+      <CreateClientModal isOpen={isCreateModalOpen} onClose={() => setIsCreateModalOpen(false)} />
     </div>
   );
 };

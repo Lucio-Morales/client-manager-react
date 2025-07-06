@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "jsx": "react-jsx", // para React 17+
+    "jsx": "react-jsx",
     "module": "ESNext",
     "lib": ["DOM", "es2020"],
     "target": "ES6",
@@ -11,8 +11,4 @@
     "skipLibCheck": true
   },
  "include": ["src"]
-  // "references": [
-  //   { "path": "./tsconfig.app.json" },
-  //   { "path": "./tsconfig.node.json" }
-  // ]
 }
