@@ -23,6 +23,7 @@ import ClientDetail from '../modules/trainer/pages/ClientDetail';
 import RoutineEditor from '../modules/trainer/pages/RoutineEditor';
 import ClientRoutine from '../modules/client/pages/ClientRoutine';
 import Progress from '../modules/client/pages/Progress';
+import ExercisesList from '../modules/trainer/pages/Exercises';
 
 export const router = createBrowserRouter([
   {
@@ -80,6 +81,7 @@ export const router = createBrowserRouter([
           { path: 'clients', element: <ClientsList /> },
           { path: 'clients/:id', element: <ClientDetail /> },
           { path: 'routines', element: <RoutinesList /> },
+          { path: 'exercises', element: <ExercisesList /> },
           { path: 'routines/:id', element: <RoutineEditor /> },
           { path: 'payments', element: <Payments /> },
         ],
