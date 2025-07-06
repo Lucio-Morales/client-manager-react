@@ -1,6 +1,17 @@
 import { useUserStore } from '../../store/userStore';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { BarChart3, CircleDollarSign, Dumbbell, Home, ListTodo, LogOut, Settings, User, Users } from 'lucide-react';
+import {
+  BarChart3,
+  Bell,
+  CircleDollarSign,
+  Dumbbell,
+  Home,
+  ListTodo,
+  LogOut,
+  Settings,
+  User,
+  Users,
+} from 'lucide-react';
 import clsx from 'clsx';
 
 const navItems = {
@@ -15,6 +26,7 @@ const navItems = {
     { path: '/trainer/clients', label: 'Clients', icon: Users },
     { path: '/trainer/routines', label: 'Routines', icon: Dumbbell },
     { path: '/trainer/exercises', label: 'Exercises', icon: ListTodo },
+    { path: '/trainer/notifications', label: 'Notifications', icon: Bell },
     { path: '/trainer/payments', label: 'Payments', icon: CircleDollarSign },
   ],
   client: [

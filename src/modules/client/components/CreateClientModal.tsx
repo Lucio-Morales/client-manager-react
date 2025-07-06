@@ -11,7 +11,7 @@ const createClientSchema = z.object({
   phone: z.string().optional(),
 });
 
-type CreateClientFormData = z.infer<typeof createClientSchema>;
+export type CreateClientFormData = z.infer<typeof createClientSchema>;
 
 interface CreateClientModalProps {
   isOpen: boolean;
