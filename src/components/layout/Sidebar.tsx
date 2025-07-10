@@ -1,6 +1,7 @@
 import { useUserStore } from '../../store/userStore';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import {
+  Apple,
   BarChart3,
   Bell,
   CircleDollarSign,
@@ -31,8 +32,11 @@ const navItems = {
   ],
   client: [
     { path: '/client', label: 'Home', icon: Home },
+    { path: '/client/profile', label: 'Profile', icon: User },
     { path: '/client/routine', label: 'Routine', icon: ListTodo },
+    { path: '/client/nutrition', label: 'Nutrition', icon: Apple },
     { path: '/client/progress', label: 'Progress', icon: BarChart3 },
+    { path: '/client/notifications', label: 'Notifications', icon: Bell },
   ],
 };
 
