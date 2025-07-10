@@ -1,17 +1,9 @@
 import { Dialog, DialogPanel, DialogTitle } from '@headlessui/react';
-import { useForm } from 'react-hook-form';
-import { z } from 'zod';
-import { zodResolver } from '@hookform/resolvers/zod';
+import { SearchBar } from '../../../components/ui/SearchBar';
 import { useState } from 'react';
-
-const createClientSchema = z.object({
-  name: z.string().min(2, 'El nomnbre debe tener al menos 2 caracteres.'),
-  dni: z.string().min(1, 'El DNI es obligatorio').regex(/^\d+$/, 'El DNI debe contener solo números'),
-  email: z.string().email('Correo invalido'),
-  phone: z.string().optional(),
-});
-
-export type CreateClientFormData = z.infer<typeof createClientSchema>;
+import { Client } from '../../../types/client/types';
+import { searchUsers, sendInvitation } from '../../trainer/api/profile';
+import { X } from 'lucide-react';
 
 interface CreateClientModalProps {
   isOpen: boolean;
@@ -19,88 +11,68 @@ interface CreateClientModalProps {
 }
 
 const CreateClientModal = ({ isOpen, onClose }: CreateClientModalProps) => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    reset,
-  } = useForm<CreateClientFormData>({
-    resolver: zodResolver(createClientSchema),
-  });
+  const [invitedIds, setInvitedIds] = useState<string[]>([]);
 
-  const [loading, setLoading] = useState(false);
-
-  const onSubmit = (data: CreateClientFormData) => {
-    setLoading(true);
-    console.log('Datos enviados:', data);
-    setTimeout(() => {
-      setLoading(false);
-      reset();
-      onClose();
-    }, 1000);
+  const handleInvite = async (user: Client) => {
+    try {
+      await sendInvitation(user.id);
+      setInvitedIds((prev) => [...prev, user.id]);
+    } catch (error) {
+      console.error('Error al invitar:', error);
+      alert('Hubo un error al enviar la invitación.');
+    }
   };
 
   return (
-    <Dialog open={isOpen} onClose={onClose} className="fixed inset-0 z-50">
-      <div className="fixed inset-0 bg-black/40" aria-hidden="true" />
+    <Dialog open={isOpen} onClose={onClose} className="relative z-50">
+      {/* Fondo opaco */}
+      <div className="fixed inset-0 bg-black/30 backdrop-blur-sm" aria-hidden="true" />
+
+      {/* Contenido del modal */}
       <div className="fixed inset-0 flex items-center justify-center p-4">
-        <DialogPanel className="bg-white dark:bg-zinc-900 p-6 rounded-2xl w-full max-w-md shadow-xl">
-          <DialogTitle className="text-xl font-semibold mb-4">Nuevo Cliente</DialogTitle>
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-            <div>
-              <label className="block text-sm font-medium mb-1">Nombre</label>
-              <input
-                {...register('name')}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-indigo-500"
-              />
-              {errors.name && <p className="text-sm text-red-600">{errors.name.message}</p>}
-            </div>
+        <DialogPanel
+          className="w-full max-w-xl bg-white dark:bg-zinc-900 rounded-xl shadow-lg p-6 border border-zinc-200 dark:border-zinc-700 space-y-6 relative"
+          style={{ minHeight: 420 }}
+        >
+          {/* Header con título y botón X */}
+          <div className="flex justify-between items-start">
+            <DialogTitle className="text-lg font-semibold text-zinc-800 dark:text-zinc-100">
+              Buscador de clientes
+            </DialogTitle>
+            <button
+              onClick={onClose}
+              className="text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-300 transition cursor-pointer"
+              aria-label="Cerrar"
+            >
+              <X size={20} />
+            </button>
+          </div>
 
-            <div>
-              <label className="block text-sm font-medium mb-1">DNI</label>
-              <input
-                {...register('dni')}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-indigo-500"
-              />
-              {errors.dni && <p className="text-sm text-red-600">{errors.dni.message}</p>}
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium mb-1">Email</label>
-              <input
-                {...register('email')}
-                type="email"
-                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-indigo-500"
-              />
-              {errors.email && <p className="text-sm text-red-600">{errors.email.message}</p>}
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium mb-1">Teléfono</label>
-              <input
-                {...register('phone')}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-indigo-500"
-              />
-              {errors.phone && <p className="text-sm text-red-600">{errors.phone.message}</p>}
-            </div>
-
-            <div className="flex justify-end gap-2">
-              <button
-                type="button"
-                onClick={onClose}
-                className="px-4 py-2 rounded-md bg-gray-200 text-gray-800 hover:bg-gray-300 cursor-pointer"
+          {/* SearchBar con resultados */}
+          <SearchBar<Client>
+            placeholder="Buscar por nombre, email o DNI"
+            searchFn={searchUsers}
+            renderResult={(user) => (
+              <div
+                key={user.id}
+                className="flex justify-between items-center border border-zinc-200 dark:border-zinc-700 rounded-lg p-3 hover:bg-zinc-50 dark:hover:bg-zinc-800 transition"
               >
-                Cancelar
-              </button>
-              <button
-                type="submit"
-                disabled={loading}
-                className="px-4 py-2 rounded-md bg-indigo-600 text-white hover:bg-indigo-700 cursor-pointer"
-              >
-                {loading ? 'Creando...' : 'Crear Cliente'}
-              </button>
-            </div>
-          </form>
+                <div>
+                  <p className="font-medium text-zinc-900 dark:text-white">{user.name}</p>
+                  <p className="text-sm text-zinc-500 dark:text-zinc-400">
+                    {user.email} — {user.dni}
+                  </p>
+                </div>
+                <button
+                  className="text-sm px-3 py-1 rounded bg-blue-500 text-white hover:bg-blue-600 disabled:bg-gray-400 cursor-pointer"
+                  disabled={invitedIds.includes(user.id)}
+                  onClick={() => handleInvite(user)}
+                >
+                  {invitedIds.includes(user.id) ? 'Invitado' : 'Invitar'}
+                </button>
+              </div>
+            )}
+          />
         </DialogPanel>
       </div>
     </Dialog>

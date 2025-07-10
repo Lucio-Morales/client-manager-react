@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { RefreshCcw, Search } from 'lucide-react';
+import { Plus, RefreshCcw, Search } from 'lucide-react';
 
 interface ClientToolbarProps {
   totalClients: number;
@@ -24,8 +24,8 @@ const ClientToolbar: React.FC<ClientToolbarProps> = ({ totalClients, onSearch, o
           onClick={onNewClient}
           className="flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-md transition cursor-pointer"
         >
-          <Search size={18} />
-          Buscar cliente
+          <Plus size={18} />
+          Agregar cliente
         </button>
         <button
           onClick={onRefreshClients}
