@@ -1,6 +1,6 @@
 import { Dialog, DialogPanel, DialogTitle } from '@headlessui/react';
 import { SearchBar } from '../../../components/ui/SearchBar';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Client } from '../../../types/client/types';
 import { searchUsers, sendInvitation } from '../../trainer/api/profile';
 import { X } from 'lucide-react';
@@ -72,6 +72,7 @@ const CreateClientModal = ({ isOpen, onClose }: CreateClientModalProps) => {
                 </button>
               </div>
             )}
+            isOpen={isOpen}
           />
         </DialogPanel>
       </div>
