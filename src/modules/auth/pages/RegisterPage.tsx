@@ -6,6 +6,7 @@ export default function RegisterPage() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    dni: '',
     password: '',
     role: '',
   });
@@ -29,6 +30,7 @@ export default function RegisterPage() {
       const { success } = await registerRequest(
         formData.name,
         formData.email,
+        formData.dni,
         formData.password,
         formData.role as 'trainer' | 'client'
       );
@@ -37,7 +39,7 @@ export default function RegisterPage() {
 
       if (success) {
         setRegistered(true);
-        setFormData({ name: '', email: '', password: '', role: '' });
+        setFormData({ name: '', email: '', dni: '', password: '', role: '' });
       } else {
         setError('Ocurrió un error al registrar.');
       }
@@ -83,6 +85,16 @@ export default function RegisterPage() {
             name="email"
             placeholder="Email"
             value={formData.email}
+            onChange={handleChange}
+            required
+            className="w-full p-2 border mb-2 rounded"
+          />
+
+          <input
+            type="text"
+            name="dni"
+            placeholder="DNI"
+            value={formData.dni}
             onChange={handleChange}
             required
             className="w-full p-2 border mb-2 rounded"

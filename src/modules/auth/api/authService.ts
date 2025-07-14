@@ -7,17 +7,20 @@ interface User {
   role: Role;
   name: string;
   email: string;
+  dni: string;
 }
 
 export async function registerRequest(
   name: string,
   email: string,
+  dni: string,
   password: string,
   role: Role
 ): Promise<{ success: boolean; user: User }> {
   const response = await axios.post('http://localhost:3000/auth/register', {
     name,
     email,
+    dni,
     password,
     role,
   });
