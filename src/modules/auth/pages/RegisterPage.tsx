@@ -51,21 +51,21 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
+    <div className="min-h-screen flex items-center justify-center p-4">
       {loading ? (
         <p className="text-lg font-medium">Loading...</p>
       ) : registered ? (
-        <div className="bg-white p-6 rounded shadow-md w-full max-w-sm text-center">
+        <div className="p-6 rounded shadow-md w-full max-w-sm text-center">
           <h2 className="text-xl font-semibold mb-4">Registro exitoso 🎉</h2>
           <button
             onClick={() => navigate('/auth/login')}
-            className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
+            className="w-full bg-indigo-600 text-white py-2 rounded hover:bg-indigo-700"
           >
             Ingresar
           </button>
         </div>
       ) : (
-        <form onSubmit={handleSubmit} className="bg-white p-6 rounded shadow-md w-full max-w-sm">
+        <form onSubmit={handleSubmit} className="p-6 rounded shadow-md w-full max-w-sm bg-zinc-900">
           <h2 className="text-xl font-semibold mb-4">Registrarse</h2>
 
           {error && <p className="text-red-600 mb-2 text-sm">{error}</p>}
@@ -77,7 +77,7 @@ export default function RegisterPage() {
             value={formData.name}
             onChange={handleChange}
             required
-            className="w-full p-2 border mb-2 rounded"
+            className="w-full p-2 border mb-2 border-zinc-700 rounded focus:outline-none"
           />
 
           <input
@@ -87,7 +87,7 @@ export default function RegisterPage() {
             value={formData.email}
             onChange={handleChange}
             required
-            className="w-full p-2 border mb-2 rounded"
+            className="w-full p-2 border mb-2 border-zinc-700 rounded focus:outline-none"
           />
 
           <input
@@ -97,7 +97,7 @@ export default function RegisterPage() {
             value={formData.dni}
             onChange={handleChange}
             required
-            className="w-full p-2 border mb-2 rounded"
+            className="w-full p-2 border mb-2 border-zinc-700 rounded focus:outline-none"
           />
 
           <input
@@ -107,7 +107,7 @@ export default function RegisterPage() {
             value={formData.password}
             onChange={handleChange}
             required
-            className="w-full p-2 border mb-2 rounded"
+            className="w-full p-2 border mb-2 border-zinc-700 rounded focus:outline-none"
           />
 
           <select
@@ -115,25 +115,29 @@ export default function RegisterPage() {
             value={formData.role}
             onChange={handleChange}
             required
-            className="w-full p-2 border mb-4 rounded"
+            className="w-full p-2 border mb-4 border-zinc-700 rounded focus:outline-none"
           >
             <option value="" disabled hidden>
               Seleccioná un rol
             </option>
-            <option value="trainer">Entrenador</option>
-            <option value="client">Cliente</option>
+            <option className="bg-zinc-900 rounded" value="trainer">
+              Entrenador
+            </option>
+            <option className="bg-zinc-900 rounded" value="client">
+              Cliente
+            </option>
           </select>
 
           <button
             type="submit"
-            className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition-colors cursor-pointer"
+            className="w-full bg-indigo-600 text-white py-2 rounded hover:bg-indigo-700 transition-colors cursor-pointer"
           >
             Crear cuenta
           </button>
 
           <p className="mt-4 text-sm">
             ¿Ya tenés cuenta?{' '}
-            <Link to="/auth/login" className="text-blue-600 hover:underline">
+            <Link to="/auth/login" className="text-indigo-500 hover:underline">
               Iniciá sesión
             </Link>
           </p>

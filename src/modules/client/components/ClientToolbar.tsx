@@ -17,7 +17,7 @@ const ClientToolbar: React.FC<ClientToolbarProps> = ({ totalClients, onSearch, o
   };
 
   return (
-    <div className="w-full bg-white p-4 flex flex-wrap items-center justify-between gap-4 rounded-md border border-gray-200 shadow-sm">
+    <div className="w-full bg-zinc-900 p-4 flex flex-wrap items-center justify-between gap-4 rounded-md shadow-sm mb-1">
       {/* Botones */}
       <div className="flex flex-wrap gap-3">
         <button
@@ -37,8 +37,8 @@ const ClientToolbar: React.FC<ClientToolbarProps> = ({ totalClients, onSearch, o
       </div>
 
       {/* Contador */}
-      <div className="text-gray-700 font-medium text-sm sm:text-base">
-        Total de Clientes: <span className="text-gray-900 font-semibold">{totalClients}</span>
+      <div className="text-zinc-300 font-medium text-sm sm:text-base">
+        Total de Clientes: <span className="text-zinc-300 font-semibold">{totalClients}</span>
       </div>
 
       {/* Barra de búsqueda */}
@@ -46,7 +46,7 @@ const ClientToolbar: React.FC<ClientToolbarProps> = ({ totalClients, onSearch, o
         <input
           type="text"
           placeholder="Buscar clientes..."
-          className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm sm:text-base"
+          className="w-full pl-10 pr-4 py-2 border text-zinc-300 border-zinc-600 focus:outline-none rounded-md  text-sm sm:text-base"
           value={searchTerm}
           onChange={handleSearchChange}
           aria-label="Buscar clientes"

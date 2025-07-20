@@ -36,9 +36,9 @@ const PostForm: FC<NewPostFormProps> = ({ onAddPost, currentUser }) => {
   const isDisabled = isPosting || !postContent.trim();
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white p-4 mb-4 rounded shadow-sm border border-gray-200 w-full">
+    <form onSubmit={handleSubmit} className="text-white p-4 mb-4 rounded-lg shadow-sm border border-zinc-800 w-full">
       <textarea
-        className="w-full resize-none border border-gray-300 rounded p-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+        className="w-full resize-none border border-zinc-800 rounded-lg p-2 text-sm focus:outline-none "
         rows={3}
         placeholder="¿En qué estás pensando?"
         value={postContent}
@@ -49,10 +49,18 @@ const PostForm: FC<NewPostFormProps> = ({ onAddPost, currentUser }) => {
       <div className="flex justify-between items-center mt-2">
         {/* Íconos decorativos */}
         <div className="flex items-center gap-3 text-gray-500">
-          <button type="button" title="Agregar imagen" className="hover:text-blue-600 transition-colors cursor-pointer">
+          <button
+            type="button"
+            title="Agregar imagen"
+            className="hover:text-indigo-600 transition-colors cursor-pointer"
+          >
             <Image size={20} />
           </button>
-          <button type="button" title="Agregar video" className="hover:text-blue-600 transition-colors cursor-pointer">
+          <button
+            type="button"
+            title="Agregar video"
+            className="hover:text-indigo-600 transition-colors cursor-pointer"
+          >
             <Video size={20} />
           </button>
         </div>
@@ -62,7 +70,9 @@ const PostForm: FC<NewPostFormProps> = ({ onAddPost, currentUser }) => {
           type="submit"
           disabled={isDisabled}
           className={`inline-flex items-center gap-2 px-4 py-2 rounded text-sm font-medium text-white ${
-            isDisabled ? 'bg-blue-300 cursor-not-allowed' : 'bg-blue-600 hover:bg-blue-700 transition-colors'
+            isDisabled
+              ? 'bg-indigo-400 cursor-not-allowed'
+              : 'bg-indigo-600 hover:bg-indigo-700 transition-colors cursor-pointer'
           }`}
         >
           {isPosting ? (

@@ -55,9 +55,12 @@ export default function Sidebar() {
   };
 
   return (
-    <aside className="w-64 bg-white border-r border-gray-400  h-screen sticky top-0 flex flex-col justify-between p-4">
+    <aside className="w-64 bg-zinc-900 border-r border-zinc-800  h-screen sticky top-0 flex flex-col justify-between p-4">
       <div>
-        <h2 className="text-2xl font-bold mb-6 text-center">Fit-Admin</h2>
+        <h2 className="text-2xl font-bold mb-6 text-center flex items-center justify-center gap-2">
+          <Dumbbell size={24} strokeWidth={2} className="text-indigo-700" /> {/* Usa el componente del icono */}
+          Fit-Admin
+        </h2>
         <nav className="space-y-2">
           {items.map((item: any) => {
             const Icon = item.icon;
@@ -66,10 +69,8 @@ export default function Sidebar() {
                 key={item.path}
                 to={item.path}
                 className={clsx(
-                  'flex items-center gap-2 px-4 py-2 rounded hover:bg-blue-100 dark:hover:bg-blue-800 ',
-                  location.pathname === item.path
-                    ? 'bg-blue-200 dark:bg-blue-700 font-semibold'
-                    : 'text-gray-700 dark:text-gray-300'
+                  'flex items-center gap-2 px-4 py-2 rounded hover:bg-zinc-800 ',
+                  location.pathname === item.path ? 'bg-zinc-800 text-gray-200' : 'text-gray-200 dark:text-gray-300'
                 )}
               >
                 <Icon size={18} />

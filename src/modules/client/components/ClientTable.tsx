@@ -11,11 +11,11 @@ const ClientTable: React.FC<ClientTableProps> = ({ clients }) => {
     acciones: '10%',
   };
   return (
-    <div className="w-full flex-grow flex flex-col rounded-lg shadow-md overflow-hidden bg-white">
+    <div className="w-full flex-grow flex flex-col rounded-lg shadow-md overflow-hidden bg-zinc-950">
       <div className="overflow-x-auto">
         <table className="min-w-full leading-normal table-fixed">
           <thead>
-            <tr className="text-black uppercase text-sm leading-normal bg-gray-100 bg-opacity-90 backdrop-blur-md">
+            <tr className="text-zinc-300 uppercase text-sm leading-normal bg-zinc-900 bg-opacity-90 backdrop-blur-md">
               <th className="py-3 px-6 text-left sticky top-0 z-10" style={{ width: columnWidths.cliente }}>
                 Cliente
               </th>
@@ -26,7 +26,7 @@ const ClientTable: React.FC<ClientTableProps> = ({ clients }) => {
                 Rutina
               </th>
               <th className="py-3 px-6 text-left sticky top-0  z-10" style={{ width: columnWidths.pago }}>
-                Pago
+                Información
               </th>
               <th className="py-3 px-6 text-center sticky top-0  z-10" style={{ width: columnWidths.acciones }}>
                 Acciones
@@ -38,7 +38,7 @@ const ClientTable: React.FC<ClientTableProps> = ({ clients }) => {
               clients.map((client) => <ClientTableRow key={client.id} client={client} columnWidths={columnWidths} />)
             ) : (
               <tr>
-                <td colSpan={5} className="py-4 px-6 text-center text-gray-500">
+                <td colSpan={5} className="py-4 px-6 text-center text-gray-200">
                   No hay clientes para mostrar.
                 </td>
               </tr>

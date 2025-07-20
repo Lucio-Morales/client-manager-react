@@ -7,9 +7,9 @@ interface PostItemProps {
 }
 
 const roleStyles: Record<Post['user']['role'], string> = {
-  admin: 'bg-purple-100 text-purple-700',
-  trainer: 'bg-blue-100 text-blue-700',
-  client: 'bg-orange-100 text-orange-700',
+  admin: 'text-purple-700',
+  trainer: 'text-blue-700',
+  client: 'text-orange-700',
 };
 
 const PostItem: FC<PostItemProps> = ({ post }) => {
@@ -18,20 +18,20 @@ const PostItem: FC<PostItemProps> = ({ post }) => {
   const formattedDate = new Date(createdAt).toLocaleString();
 
   return (
-    <article className="bg-white p-4 rounded shadow-sm border border-gray-200 w-full">
+    <article className="p-4 rounded-lg shadow-sm bg-zinc-950 w-full border-b border-zinc-800 mb-4 last:border-b-0 last:mb-0">
       <header className="flex items-center justify-between mb-2">
         <div className="flex items-center gap-2 flex-wrap">
-          <p className="font-semibold text-gray-800 text-sm">{user.name}</p>
-          <span className={`text-xs font-medium px-2 py-0.5 rounded ${roleStyles[user.role]} capitalize`}>
+          <p className="font-semibold text-white text-sm">{user.name}</p>
+          <span className={`text-xs font-medium px-2 py-0.5 border rounded ${roleStyles[user.role]} capitalize`}>
             {user.role}
           </span>
         </div>
-        <span className="text-xs text-gray-400">{formattedDate}</span>
+        <span className="text-xs text-zinc-500">{formattedDate}</span>
       </header>
-      <p className="text-gray-700 text-sm whitespace-pre-wrap mb-3">{content}</p>
+      <p className="text-zinc-400 text-sm whitespace-pre-wrap mb-3">{content}</p>
 
       {/* ACCIONES */}
-      <div className="flex justify-between text-gray-500 text-sm pt-2 border-t border-gray-100">
+      <div className="flex justify-between text-zinc-500 text-sm pt-2 border-t border-zinc-800">
         <button className="flex items-center gap-1 hover:text-red-500 transition-colors cursor-pointer">
           <Heart size={16} />
           <span>{post.likes}</span>

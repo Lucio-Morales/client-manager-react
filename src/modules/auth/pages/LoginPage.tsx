@@ -30,8 +30,8 @@ export default function LoginPage() {
     }
   };
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
-      <form onSubmit={handleSubmit} className="bg-white p-6 rounded shadow-md w-full max-w-sm">
+    <div className="min-h-screen flex items-center justify-center p-4">
+      <form onSubmit={handleSubmit} className="p-6 rounded bg-zinc-900 shadow-md w-full max-w-sm">
         <h2 className="text-xl font-semibold mb-4">Iniciar sesión</h2>
         <input
           type="email"
@@ -39,7 +39,7 @@ export default function LoginPage() {
           value={userData.email}
           onChange={(event) => setUserData({ ...userData, email: event.target.value })}
           required
-          className="w-full p-2 border mb-2 rounded"
+          className="w-full p-2 border border-zinc-700 mb-2 rounded focus:outline-none"
         />
         <input
           type="password"
@@ -47,14 +47,17 @@ export default function LoginPage() {
           value={userData.password}
           onChange={(event) => setUserData({ ...userData, password: event.target.value })}
           required
-          className="w-full p-2 border mb-2 rounded"
+          className="w-full p-2 border border-zinc-700 mb-2 rounded focus:outline-none"
         />
-        <button type="submit" className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 cursor-pointer">
+        <button
+          type="submit"
+          className="w-full bg-indigo-600 text-white py-2 rounded hover:bg-indigo-700 cursor-pointer"
+        >
           Iniciar sesión
         </button>
         <p className="mt-4 text-sm">
           ¿No tenés cuenta?{' '}
-          <Link to="/auth/register" className="text-blue-600 hover:underline">
+          <Link to="/auth/register" className="text-indigo-500 hover:underline ">
             Registrate
           </Link>
         </p>

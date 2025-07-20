@@ -17,7 +17,7 @@ const Feed = () => {
   };
   return (
     <section className="w-full max-w-2xl mx-auto ">
-      <h2 className="text-xl font-bold text-gray-800">Comunidad Fit</h2>
+      <h2 className="text-xl font-bold text-zinc-400">Comunidad Fit</h2>
       <PostForm onAddPost={handleAddPost} currentUser={currentUser} />
       {posts.map((post) => (
         <PostItem key={post.id} post={post} />
