@@ -1,7 +1,7 @@
 const Payments = () => {
   return (
     <>
-      <p>Trainer payments</p>
+      <p>Admin payments</p>
     </>
   );
 };

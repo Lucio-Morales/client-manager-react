@@ -16,7 +16,6 @@ import MainLayout from '../layouts/PrivateLayout';
 import Profile from '../modules/trainer/pages/Profile';
 import ClientsList from '../modules/trainer/pages/ClientsList';
 import RoutinesList from '../modules/trainer/pages/RoutinesList';
-import Payments from '../modules/trainer/pages/Payments';
 import Users from '../modules/admin/pages/Users';
 import { RequireUnauth } from '../modules/auth/components/RequireUnauth';
 import ClientDetail from '../modules/trainer/pages/ClientDetail';
@@ -24,6 +23,8 @@ import RoutineEditor from '../modules/trainer/pages/RoutineEditor';
 import ClientRoutine from '../modules/client/pages/ClientRoutine';
 import Progress from '../modules/client/pages/Progress';
 import ExercisesList from '../modules/trainer/pages/Exercises';
+import Notifications from '../modules/trainer/pages/Notifications';
+import Payments from '../modules/admin/pages/Payments';
 
 export const router = createBrowserRouter([
   {
@@ -64,6 +65,7 @@ export const router = createBrowserRouter([
           { path: 'dashboard', element: <AdminDashboard /> },
           { path: 'users', element: <Users /> },
           { path: 'settings', element: <Settings /> },
+          { path: 'payments', element: <Payments /> },
         ],
       },
     ],
@@ -83,7 +85,7 @@ export const router = createBrowserRouter([
           { path: 'routines', element: <RoutinesList /> },
           { path: 'exercises', element: <ExercisesList /> },
           { path: 'routines/:id', element: <RoutineEditor /> },
-          { path: 'payments', element: <Payments /> },
+          { path: 'notifications', element: <Notifications /> },
         ],
       },
     ],

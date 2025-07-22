@@ -1,44 +1,9 @@
 import { useUserStore } from '../../store/userStore';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import {
-  Apple,
-  BarChart3,
-  Bell,
-  CircleDollarSign,
-  Dumbbell,
-  Home,
-  ListTodo,
-  LogOut,
-  Settings,
-  User,
-  Users,
-} from 'lucide-react';
 import clsx from 'clsx';
-
-const navItems = {
-  admin: [
-    { path: '/admin', label: 'Home', icon: Home },
-    { path: '/admin/users', label: 'Users', icon: Users },
-    { path: '/admin/settings', label: 'Settings', icon: Settings },
-  ],
-  trainer: [
-    { path: '/trainer', label: 'Home', icon: Home },
-    { path: '/trainer/profile', label: 'Profile', icon: User },
-    { path: '/trainer/clients', label: 'Clients', icon: Users },
-    { path: '/trainer/routines', label: 'Routines', icon: Dumbbell },
-    { path: '/trainer/exercises', label: 'Exercises', icon: ListTodo },
-    { path: '/trainer/notifications', label: 'Notifications', icon: Bell },
-    { path: '/trainer/payments', label: 'Payments', icon: CircleDollarSign },
-  ],
-  client: [
-    { path: '/client', label: 'Home', icon: Home },
-    { path: '/client/profile', label: 'Profile', icon: User },
-    { path: '/client/routine', label: 'Routine', icon: ListTodo },
-    { path: '/client/nutrition', label: 'Nutrition', icon: Apple },
-    { path: '/client/progress', label: 'Progress', icon: BarChart3 },
-    { path: '/client/notifications', label: 'Notifications', icon: Bell },
-  ],
-};
+import { NavItem } from '../../types/ui/nav';
+import { navItems } from '../../constants/navItems';
+import { Dumbbell, LogOut } from 'lucide-react';
 
 export default function Sidebar() {
   const { user, logout } = useUserStore();
@@ -47,7 +12,7 @@ export default function Sidebar() {
 
   if (!user) return null;
 
-  const items = navItems[user.role] || [];
+  const items: NavItem[] = navItems[user.role] || [];
 
   const handleLogout = () => {
     logout();

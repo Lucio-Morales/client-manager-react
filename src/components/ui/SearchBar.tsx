@@ -71,10 +71,10 @@ export function SearchBar<T>({
     prevIsOpen.current = isOpen;
   }, [isOpen]);
   return (
-    <div className="space-y-4">
+    <div className=" space-y-4">
       <input
         type="text"
-        className="w-full border rounded-lg p-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+        className="w-full border rounded-lg p-2 text-sm focus:outline-none "
         placeholder={placeholder}
         value={query}
         onChange={(e) => setQuery(e.target.value)}

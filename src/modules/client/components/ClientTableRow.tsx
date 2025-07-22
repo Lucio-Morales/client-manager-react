@@ -1,4 +1,4 @@
-import { Edit, Eye, Search, Trash2 } from 'lucide-react';
+import { Edit, Eye, Mail, MessageCircle, MessageSquare, Search, Trash2 } from 'lucide-react';
 import { ClientTableRowProps } from '../../../types/client/types';
 
 // Extendemos las props para incluir los anchos de columna
@@ -57,7 +57,7 @@ const ClientTableRow: React.FC<ClientTableRowPropsWithWidths> = ({ client, colum
             <button className="text-indigo-400 hover:text-indigo-500 cursor-pointer" aria-label="Editar rutina">
               <Edit size={18} />
             </button>
-            <span className="absolute bottom-full mb-1 left-1/2 -translate-x-1/2 scale-0 group-hover:scale-100 transition-transform bg-zinc-600 text-white text-xs rounded py-1 px-2 whitespace-nowrap z-20">
+            <span className="absolute bottom-full mb-1 left-1/2 -translate-x-1/2 scale-0 group-hover:scale-100 transition-transform bg-zinc-700 text-white text-xs rounded py-1 px-2 whitespace-nowrap z-20">
               Editar rutina
             </span>
           </div>
@@ -76,23 +76,26 @@ const ClientTableRow: React.FC<ClientTableRowPropsWithWidths> = ({ client, colum
 
       <td className="py-3 px-6 text-center" style={{ width: columnWidths.acciones }}>
         <div className="flex items-center justify-center gap-4 relative">
-          {/* Botón Editar */}
+          {/* Botón enviar mensaje */}
           <div className="relative group">
-            <button className="text-indigo-400 hover:text-indigo-500 p-1.5 rounded cursor-pointer" aria-label="Editar">
-              <Edit size={20} />
+            <button
+              className="text-blue-400 hover:text-blue-500 p-1.5 rounded cursor-pointer"
+              aria-label="Enviar mensaje"
+            >
+              <Mail size={20} />
             </button>
             <span className="absolute bottom-full mb-1 left-1/2 -translate-x-1/2 scale-0 group-hover:scale-100 transition-transform bg-zinc-700 text-white text-xs rounded py-1 px-2 whitespace-nowrap z-20">
-              Editar cliente
+              Enviar mensaje
             </span>
           </div>
 
-          {/* Botón Eliminar */}
+          {/* Botón eliminar */}
           <div className="relative group">
             <button className="hover:text-red-700 text-red-500 p-1.5 rounded cursor-pointer" aria-label="Eliminar">
               <Trash2 size={20} />
             </button>
             <span className="absolute bottom-full mb-1 left-1/2 -translate-x-1/2 scale-0 group-hover:scale-100 transition-transform bg-zinc-700 text-white text-xs rounded py-1 px-2 whitespace-nowrap z-20">
-              Eliminar cliente
+              Quitar de la lista
             </span>
           </div>
         </div>

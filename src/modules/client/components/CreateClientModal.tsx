@@ -31,19 +31,13 @@ const CreateClientModal = ({ isOpen, onClose }: CreateClientModalProps) => {
       {/* Contenido del modal */}
       <div className="fixed inset-0 flex items-center justify-center p-4">
         <DialogPanel
-          className="w-full max-w-xl bg-white dark:bg-zinc-900 rounded-xl shadow-lg p-6 border border-zinc-200 dark:border-zinc-700 space-y-6 relative"
+          className="bg-zinc-800 w-full max-w-xl rounded-xl shadow-lg p-6 border border-zinc-700  space-y-6 relative"
           style={{ minHeight: 420 }}
         >
           {/* Header con título y botón X */}
           <div className="flex justify-between items-start">
-            <DialogTitle className="text-lg font-semibold text-zinc-800 dark:text-zinc-100">
-              Buscador de clientes
-            </DialogTitle>
-            <button
-              onClick={onClose}
-              className="text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-300 transition cursor-pointer"
-              aria-label="Cerrar"
-            >
+            <DialogTitle className="text-lg font-semibold text-zinc-200 ">Buscador de clientes</DialogTitle>
+            <button onClick={onClose} className="text-zinc-200  transition cursor-pointer" aria-label="Cerrar">
               <X size={20} />
             </button>
           </div>
@@ -55,20 +49,21 @@ const CreateClientModal = ({ isOpen, onClose }: CreateClientModalProps) => {
             renderResult={(user) => (
               <div
                 key={user.id}
-                className="flex justify-between items-center border border-zinc-200 dark:border-zinc-700 rounded-lg p-3 hover:bg-zinc-50 dark:hover:bg-zinc-800 transition"
+                className="flex justify-between items-center border border-zinc-600  rounded-lg p-3 hover:bg-zinc-700 dark:hover:bg-zinc-800 transition"
               >
                 <div>
-                  <p className="font-medium text-zinc-900 dark:text-white">{user.name}</p>
-                  <p className="text-sm text-zinc-500 dark:text-zinc-400">
+                  <p className="font-medium text-zinc-200">{user.name}</p>
+                  <p className="text-sm text-zinc-400">
                     {user.email} — {user.dni}
                   </p>
                 </div>
                 <button
-                  className="text-sm px-3 py-1 rounded bg-blue-500 text-white hover:bg-blue-600 disabled:bg-gray-400 cursor-pointer"
+                  className="text-sm px-3 py-1 rounded bg-indigo-600 text-white  disabled:bg-gray-400 cursor-pointer"
                   disabled={invitedIds.includes(user.id)}
                   onClick={() => handleInvite(user)}
                 >
-                  {invitedIds.includes(user.id) ? 'Invitado' : 'Invitar'}
+                  Agregar a mi lista
+                  {/* {invitedIds.includes(user.id) ? 'Invitado' : 'Invitar'} */}
                 </button>
               </div>
             )}
