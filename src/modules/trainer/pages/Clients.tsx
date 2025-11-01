@@ -1,4 +1,4 @@
-const Routines = () => {
+const ClientsPage = () => {
   return (
     <div className="border border-gray-300 rounded-xl p-6 bg-white h-full">
       <h2 className="text-xl font-medium text-zinc-800 mb-6">Rutinas</h2>
@@ -24,4 +24,4 @@ const Routines = () => {
   );
 };
 
-export default Routines;
+export default ClientsPage;
