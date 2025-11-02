@@ -17,28 +17,27 @@ const ClientToolbar: React.FC<ClientToolbarProps> = ({ totalClients, onSearch, o
   };
 
   return (
-    <div className="w-full bg-zinc-900 p-4 flex flex-wrap items-center justify-between gap-4 rounded-md shadow-sm mb-1">
+    <div className="w-full border border-gray-300 bg-white px-3 py-3 flex flex-wrap items-center justify-between gap-4 rounded-xl shadow-md mb-1">
       {/* Botones */}
       <div className="flex flex-wrap gap-3">
         <button
           onClick={onNewClient}
-          className="flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-md transition cursor-pointer"
+          className="flex items-center gap-2 border border-gray-300 hover:bg-gray-200 text-zinc-600 font-medium py-2 px-4 rounded-full transition duration-200 cursor-pointer"
         >
           <Plus size={18} />
           Agregar cliente
         </button>
         <button
           onClick={onRefreshClients}
-          className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-md transition cursor-pointer"
+          className="flex items-center gap-2 border border-gray-300 hover:bg-zinc-200 text-zinc-700 font-semibold px-3 rounded-full transition cursor-pointer"
         >
           <RefreshCcw size={18} />
-          Actualizar lista
         </button>
       </div>
 
       {/* Contador */}
-      <div className="text-zinc-300 font-medium text-sm sm:text-base">
-        Total de Clientes: <span className="text-zinc-300 font-semibold">{totalClients}</span>
+      <div className="text-zinc-600 font-medium text-sm sm:text-base">
+        Clientes: <span className="text-zinc-600 font-medium">{totalClients}</span>
       </div>
 
       {/* Barra de búsqueda */}
@@ -46,7 +45,7 @@ const ClientToolbar: React.FC<ClientToolbarProps> = ({ totalClients, onSearch, o
         <input
           type="text"
           placeholder="Buscar clientes..."
-          className="w-full pl-10 pr-4 py-2 border text-zinc-300 border-zinc-600 focus:outline-none rounded-md  text-sm sm:text-base"
+          className="w-full pl-10 pr-4 py-2 border text-zinc-600 border-gray-200 focus:outline-none rounded-xl  text-sm sm:text-base"
           value={searchTerm}
           onChange={handleSearchChange}
           aria-label="Buscar clientes"

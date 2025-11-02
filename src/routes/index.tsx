@@ -15,7 +15,7 @@ import RegisterPage from '../modules/auth/pages/RegisterPage';
 import MainLayout from '../layouts/PrivateLayout';
 import Profile from '../modules/trainer/pages/Profile';
 import ClientsList from '../modules/trainer/pages/ClientsList';
-import RoutinesList from '../modules/trainer/pages/RoutinesList';
+import Routines from '../modules/trainer/pages/RoutinesList';
 import Users from '../modules/admin/pages/Users';
 import { RequireUnauth } from '../modules/auth/components/RequireUnauth';
 import ClientDetail from '../modules/trainer/pages/ClientDetail';
@@ -82,7 +82,7 @@ export const router = createBrowserRouter([
           { path: 'profile', element: <Profile /> },
           { path: 'clients', element: <ClientsList /> },
           { path: 'clients/:id', element: <ClientDetail /> },
-          { path: 'routines', element: <RoutinesList /> },
+          { path: 'routines', element: <Routines /> },
           { path: 'exercises', element: <ExercisesList /> },
           { path: 'routines/:id', element: <RoutineEditor /> },
           { path: 'notifications', element: <Notifications /> },

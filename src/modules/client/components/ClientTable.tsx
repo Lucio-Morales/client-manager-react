@@ -11,24 +11,35 @@ const ClientTable: React.FC<ClientTableProps> = ({ clients }) => {
     acciones: '10%',
   };
   return (
-    <div className="w-full flex-grow flex flex-col rounded-lg shadow-md overflow-hidden bg-zinc-950">
+    <div className="w-full flex-grow flex flex-col rounded-xl shadow-md overflow-hidden bg-white border border-gray-300 ">
       <div className="overflow-x-auto">
         <table className="min-w-full leading-normal table-fixed">
-          <thead>
-            <tr className="text-zinc-300 uppercase text-sm leading-normal bg-zinc-900 bg-opacity-90 backdrop-blur-md">
-              <th className="py-3 px-6 text-left sticky top-0 z-10" style={{ width: columnWidths.cliente }}>
+          <thead className="">
+            <tr className="text-zinc-700 bg-zinc-100 uppercase text-sm leading-normal  bg-opacity-90 backdrop-blur-md">
+              <th className="py-2 px-6 text-left sticky top-0 z-10 font-medium" style={{ width: columnWidths.cliente }}>
                 Cliente
               </th>
-              <th className="py-3 px-6 text-left sticky top-0  z-10" style={{ width: columnWidths.estado }}>
+              <th className="py-3 px-6 text-left sticky top-0  z-10 font-medium" style={{ width: columnWidths.estado }}>
                 Estado
               </th>
-              <th className="py-3 px-6 text-left sticky top-0  z-10" style={{ width: columnWidths.rutina }}>
+              <th
+                className="py-3 px-6 text-left sticky top-0  z-10
+              font-medium"
+                style={{ width: columnWidths.rutina }}
+              >
                 Rutina
               </th>
-              <th className="py-3 px-6 text-left sticky top-0  z-10" style={{ width: columnWidths.pago }}>
+              <th
+                className="py-3 px-6 text-left sticky top-0  z-10
+              font-medium"
+                style={{ width: columnWidths.pago }}
+              >
                 Información
               </th>
-              <th className="py-3 px-6 text-center sticky top-0  z-10" style={{ width: columnWidths.acciones }}>
+              <th
+                className="py-3 px-6 text-center sticky top-0  z-10 font-medium"
+                style={{ width: columnWidths.acciones }}
+              >
                 Acciones
               </th>
             </tr>
@@ -38,7 +49,7 @@ const ClientTable: React.FC<ClientTableProps> = ({ clients }) => {
               clients.map((client) => <ClientTableRow key={client.id} client={client} columnWidths={columnWidths} />)
             ) : (
               <tr>
-                <td colSpan={5} className="py-4 px-6 text-center text-gray-200">
+                <td colSpan={5} className="py-4 px-6 text-center text-zinc-700">
                   No hay clientes para mostrar.
                 </td>
               </tr>
