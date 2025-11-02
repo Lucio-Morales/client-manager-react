@@ -13,9 +13,9 @@ const ClientTable: React.FC<ClientTableProps> = ({ clients }) => {
   return (
     <div className="w-full flex-grow flex flex-col rounded-xl shadow-md overflow-hidden bg-white border border-gray-300 ">
       <div className="overflow-x-auto">
-        <table className="min-w-full leading-normal table-fixed">
+        <table className="min-w-full leading-normal table-fixed ">
           <thead className="">
-            <tr className="text-zinc-700 bg-zinc-100 uppercase text-sm leading-normal  bg-opacity-90 backdrop-blur-md">
+            <tr className="text-zinc-700 bg-zinc-100 uppercase text-sm leading-normal  bg-opacity-90 backdrop-blur-md sticky z-10">
               <th className="py-2 px-6 text-left sticky top-0 z-10 font-medium" style={{ width: columnWidths.cliente }}>
                 Cliente
               </th>

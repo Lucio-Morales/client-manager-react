@@ -157,7 +157,7 @@ const ClientsList = () => {
   const totalFilteredClients = useMemo(() => filteredClients.length, [filteredClients]);
 
   return (
-    <div className="min-h-full w-full flex flex-col items-center ">
+    <div className="h-screen w-full flex flex-col items-center ">
       {!loading &&
         !error && ( // Solo muestra la barra si no está cargando ni hay error
           <ClientToolbar
@@ -181,7 +181,7 @@ const ClientsList = () => {
       )}
 
       {!loading && !error && (
-        <div className="w-full flex-grow flex flex-col overflow-hidden">
+        <div className="w-full  h-full flex-grow flex flex-col overflow-hidden">
           <ClientTable clients={clients} />
         </div>
       )}
