@@ -181,7 +181,7 @@ const ClientsList = () => {
       )}
 
       {!loading && !error && (
-        <div className="w-full  h-full flex-grow flex flex-col overflow-hidden">
+        <div className="w-full flex-grow flex flex-col overflow-hidden">
           <ClientTable clients={clients} />
         </div>
       )}
