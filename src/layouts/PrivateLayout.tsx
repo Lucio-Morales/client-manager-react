@@ -1,17 +1,18 @@
 import { Outlet } from 'react-router-dom';
 import Sidebar from '../components/layout/Sidebar';
 import MobileBar from '../components/layout/MobileBar';
+import Sidebar2 from '../components/layout/Sidebar2';
 
 export default function MainLayout() {
   return (
-    <div className="flex min-h-screen">
+    <div className="flex h-auto p-6 gap-6">
       {/* Sidebar Desktop */}
       <div className="hidden md:block">
-        <Sidebar />
+        <Sidebar2 />
       </div>
 
       {/* Contenido principal */}
-      <main className="flex-1 p-6 overflow-y-auto pb-16 md:pb-6">
+      <main className="flex-1 ">
         <Outlet />
       </main>
 

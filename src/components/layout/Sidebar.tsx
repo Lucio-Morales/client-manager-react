@@ -21,7 +21,7 @@ export default function Sidebar() {
 
   return (
     <aside className="w-58 border-r bg-white border-gray-300  h-screen sticky top-0 flex flex-col justify-between p-4">
-      <div className="">
+      <div>
         <span className="text-xl bg-zinc-300 rounded-full p-2 italic text-zinc-800 font-semibold mb-6 flex items-center justify-start gap-3">
           <Dumbbell size={32} strokeWidth={1} className="bg-zinc-800 text-white rounded-full p-1" />
           Fit-Admin

@@ -25,6 +25,7 @@ import Progress from '../modules/client/pages/Progress';
 import ExercisesList from '../modules/trainer/pages/Exercises';
 import Notifications from '../modules/trainer/pages/Notifications';
 import Payments from '../modules/admin/pages/Payments';
+import Profile2 from '../modules/trainer/pages/Profile2';
 
 export const router = createBrowserRouter([
   {
@@ -79,7 +80,7 @@ export const router = createBrowserRouter([
         children: [
           { index: true, element: <TrainerDashboard /> },
           { path: '', element: <TrainerDashboard /> },
-          { path: 'profile', element: <Profile /> },
+          { path: 'profile', element: <Profile2 /> },
           { path: 'clients', element: <ClientsList /> },
           { path: 'clients/:id', element: <ClientDetail /> },
           { path: 'routines', element: <Routines /> },
