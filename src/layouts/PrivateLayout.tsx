@@ -5,14 +5,14 @@ import Sidebar2 from '../components/layout/Sidebar2';
 
 export default function MainLayout() {
   return (
-    <div className="flex h-auto p-6 gap-6">
+    <div className="flex min-h-screen p-6 gap-6">
       {/* Sidebar Desktop */}
       <div className="hidden md:block">
         <Sidebar2 />
       </div>
 
       {/* Contenido principal */}
-      <main className="flex-1 ">
+      <main className="flex-1">
         <Outlet />
       </main>
 
